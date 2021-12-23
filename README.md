@@ -25,7 +25,7 @@ A quick and dirty script to deal with the
     
 ## Logic
 
-Basically something went wrong with QTY's or pickings and now Odoo will not let you close the record. Even attempting to deleting from the API will not work. This should be used as a last resort, the script sets the QTY of the location to what is needed to close the move. 
+Basically something went wrong with QTY's or pickings and now Odoo will not let you close the record. Even attempting to delete from the API will not work. This should be used as a last resort, the script sets the QTY of the location to what is needed to close the move. 
 
 IE.
 
