@@ -69,3 +69,6 @@ python3 unres_fix.py
 
 ![Screenshot](https://i2.paste.pics/76df673157642ff1748b7f6bcc6afe77.png)
 
+## simple_brute.py
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ae1wsfbh330ufz6gx75g.png)
+
