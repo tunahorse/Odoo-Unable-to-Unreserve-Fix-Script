@@ -11,7 +11,7 @@ A quick and dirty script to deal with the
 
 I have received multiple messages asking me for help or an easier solution. While I would love to help, I don't have the time to asses each DB and set up. In the interest of helping people out, I have made an updated version of the script, simple_brute.py. 
 
-This version of the script is much more simple, and basically takes in your login info, product and locatin ID's and overwrites it with enough QTY to close the bugged move. 
+This version of the script is much more simple, and basically takes in your login info, product/location ID's and overwrites the stock.quant, with enough QTY to close the bugged move. 
 
 If you are still having issues after running this updated version, feel free to email me. 
 
