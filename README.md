@@ -4,7 +4,7 @@
 A quick and dirty script to deal with the 
 "It is not possible to unreserve more products of ... than you have in stock." bug. 
 
-# Test locally before running!!! 
+*Test locally before running!!! 
 
 
 ### UPDATE 6/10/2022
