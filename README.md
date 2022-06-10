@@ -7,6 +7,23 @@ A quick and dirty script to deal with the
 # Test locally before running!!! 
 
 
+### UPDATE 6/10/2022
+
+I have received multiple messages asking me for help or an easier solution. While I would love to help, I don't have the time to asses each DB and set up. In the interest of helping people out, I have made an update as, simple_brute.py. 
+
+This version of the script is much more simple, and basically takes in your login info, product and locatin ID's and overwrites it with enough QTY to close the bugged move. 
+
+Set up you info the same as below, then run 
+
+
+    ```python3 simple_brute.py 
+    ```   
+Follow the CLI, overwrite your QTY's and cancel, the bugged move. 
+
+
+
+
+
 
 
 ## Set up 
