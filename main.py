@@ -21,29 +21,35 @@ else:
     products = []
 
 layout = [
-    [sg.Text('Product:', size=(10, 1)), sg.Combo(products, size=(30, 1), key='-PRODUCT-', enable_events=True, readonly=True)],
-    [sg.Text('Locations:', size=(10, 1)), sg.Listbox(values=[], size=(30, 10), key='-LOCATIONS-', enable_events=True, pad=(0, (10, 0)))],
+    [sg.Text('Product:', size=(10, 1)), sg.Combo(products, size=(60, 10), key='-PRODUCT-', enable_events=True, readonly=True)],
+    [sg.Text('Locations:', size=(10, 1)), sg.Listbox(values=[], size=(60, 20), key='-LOCATIONS-', enable_events=True, pad=(0, (10, 0)))],
     [sg.Button('Unreserve'), sg.Button('Exit')]
 ]
 
-window = sg.Window('Unreserve Products', layout, size=(400, 300))
+window = sg.Window('Unreserve Products', layout, size=(800, 600))
+
+selected_product = None
+selected_location = None
 
 while True:
     event, values = window.read()
     if event == sg.WINDOW_CLOSED or event == 'Exit':
         break
     elif event == '-PRODUCT-':
-        # When a product is selected, fetch its quantities across all locations and display them
-        quantities = fetch_product_quantities(url, db, uid, password, values['-PRODUCT-'])
-        locations = [f"{location}: {quantity}" for location, quantity in quantities]
+        selected_product = values['-PRODUCT-']
+        quantities = fetch_product_quantities(url, db, uid, password, selected_product)
+        locations = [f"{location}: {quantity}" for location, quantity, _ in quantities if 'virtual' not in location.lower()]
         window['-LOCATIONS-'].update(locations)
     elif event == '-LOCATIONS-':
-        # When a location is selected, perform desired action
-        selected_location = values['-LOCATIONS-'][0]  # Assuming single selection
-        # Your logic for handling the selected location
+        selected_location = values['-LOCATIONS-'][0].split(':')[0]  # Save the selected location
         print(f"Selected Location: {selected_location}")
     elif event == 'Unreserve':
-        # Your unreserve logic here
-        sg.popup('Unreserve operation completed successfully')
+        if selected_product and selected_location:
+            # Fetch the product quantities for the selected location
+            quantities = fetch_product_quantities(url, db, uid, password, selected_product)
+            quantities_at_location = [(quantity, record) for location, quantity, record in quantities if location == selected_location]
+            sg.popup('Quantities at selected location:', quantities_at_location)
+        else:
+            sg.popup('Please select a product and a location.')
 
 window.close()

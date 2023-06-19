@@ -28,18 +28,19 @@ def fetch_products(url, db, uid, password):
 def fetch_product_quantities(url, db, uid, password, product_name):
     context = create_unverified_context()
     models = xmlrpc.client.ServerProxy(f'{url}/xmlrpc/2/object', context=context)
-    
+        
     # First, we need to get the ID of the product
     product_id = models.execute_kw(db, uid, password,
         'product.product', 'search',
         [[['name', '=', product_name]]])[0]  # Assuming product names are unique
-    
+        
     # Then, we fetch all quants for this product
     quant_records = models.execute_kw(db, uid, password,
         'stock.quant', 'search_read',
         [[['product_id', '=', product_id]]],
-      )
-    pprint(quant_records)
-    
-    # We return a list of tuples, each containing location name and quantity
-    return [(quant['location_id'][1], quant['quantity']) for quant in quant_records]
+    )
+
+    # We return a list of tuples, each containing location name, quantity, and the full record data
+    return [(quant['location_id'][1], quant['quantity'], quant) for quant in quant_records]
+
+
