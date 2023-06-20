@@ -16,14 +16,14 @@ def test_login(url, db, username, password):
         return True, uid
     else:
         return False, 0
-
 def fetch_products(url, db, uid, password):
     context = create_unverified_context()
     models = xmlrpc.client.ServerProxy(f'{url}/xmlrpc/2/object', context=context)
-    product_records = models.execute_kw(db, uid, password,
+    active_product_records = models.execute_kw(db, uid, password,
         'product.product', 'search_read',
-        [], {'fields': ['name']})
-    return [product['name'] for product in product_records]
+        [[['active', '=', True]]],  # Only fetch products where 'active' field is True
+        {'fields': ['name']})
+    return [product['name'] for product in active_product_records]
 
 def fetch_product_quantities(url, db, uid, password, product_name):
     context = create_unverified_context()

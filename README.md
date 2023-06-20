@@ -10,7 +10,7 @@ Have you been hit with the "It is not possible to unreserve more products of ...
 ## Upcoming Features
 
 I am currently working on a major update to the script to include a GUI.This update aims to simplify the process of unreserving stock quantities and improve the overall user experience. Stay tuned for more updates!
-I have had Odoo devs, but more actual Odoo users/implementers reach out to me regarding changing to a GUI or web app. The update will be up soon. If you need help or want to dicuss feel free to reach me at
+I have had Odoo devs, but more actual Odoo users/implementers reach out to me regarding changing to a GUI or web app. The update will be up soon. If you need help or want to discuss feel free to reach me at
 fabiananguiano@gmail.com 
 
 ## Contributions

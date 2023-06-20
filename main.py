@@ -1,6 +1,7 @@
 import PySimpleGUI as sg
 import yaml
 from odoo_logic import test_login, fetch_products, fetch_product_quantities
+from pprint import pprint
 
 def load_config():
     with open("config.yaml", "r") as file:
@@ -48,8 +49,15 @@ while True:
             # Fetch the product quantities for the selected location
             quantities = fetch_product_quantities(url, db, uid, password, selected_product)
             quantities_at_location = [(quantity, record) for location, quantity, record in quantities if location == selected_location]
-            sg.popup('Quantities at selected location:', quantities_at_location)
-        else:
-            sg.popup('Please select a product and a location.')
+            # Only include fields that contain "quantity"
+            quantities_at_location = [(q, {k: v for k, v in rec.items() if 'quantity' in k}) for q, rec in quantities_at_location]
+            
+            user_friendly_data = "\n".join([f"{k}: {v}" for data in quantities_at_location for k, v in data[1].items()])
+        
+            sg.popup('Quantities at selected location:', user_friendly_data)
+            
+    else:
+        sg.popup('Please select a product and a location.')
+
 
 window.close()
