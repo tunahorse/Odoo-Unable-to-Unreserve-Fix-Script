@@ -44,3 +44,9 @@ def fetch_product_quantities(url, db, uid, password, product_name):
     return [(quant['location_id'][1], quant['quantity'], quant) for quant in quant_records]
 
 
+def update_product_quantities(url, db, uid, password, record_id, new_quantity):
+    context = create_unverified_context()
+    models = xmlrpc.client.ServerProxy(f'{url}/xmlrpc/2/object', context=context)
+    models.execute_kw(db, uid, password,
+        'stock.quant', 'write',
+        [[record_id], {'quantity': new_quantity, 'reserved_quantity': new_quantity}])
