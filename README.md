@@ -8,7 +8,7 @@ Have you been hit with the "It is not possible to unreserve more products of ...
 -   For more details on how to use the original script, please refer to the README file within the `2022/` directory.
 
 ## 2023 update
-I have updated the script to be a more robust CLI. After speaking with various devs and implementers 99% of the issues came from the stock.picking model. 
+I have updated the script to be a more robust CLI. After speaking with various devs and implementers 99% of the issues came from the stock.picking model. So rather than make a complex GUI or web app, I decided to go the CLI route. 
 
 ## How to Run
 
