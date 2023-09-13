@@ -46,6 +46,8 @@ I have updated the script to be a more robust CLI. After speaking with various d
 
 - The Odoo server must have XML-RPC enabled, and you must have the necessary permissions to perform stock-related operations.
 
+- Due to the nature of Odoo having multiple stock.quant of the same product, and location but diff lot codes, I added a bit of logic to loop the stock.quant, this is not the cleanest but it gets the job done. 
+
 
 ## Contributions
 
