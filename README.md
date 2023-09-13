@@ -32,6 +32,10 @@ I have updated the script to be a more robust CLI. After speaking with various d
 
 6. When prompted, enter the stock picking name.
 
+7. The script will take the product id and location id, look up stock.quants and if there is a situation where the stock.move.line record has more reserved than the amount in the stock.quant model, you will be given the option to overwrite.
+
+8. After this, you should be able to close the bugged moved. 
+
 # Demo
 ![Demo GIF](./demo.gif)
 
